@@ -1,4 +1,4 @@
-<html>
+<html ng-app="widgets">
   <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
@@ -7,7 +7,39 @@
 
   </head>
 
-  <body>
+  <body ng-controller="RestaurantCtrl">
+
+    <div class="restaurant-form">
+      <h1>Add a restaurant</h1>
+
+      <label>Name: <input ng-model="resName"></label>
+      <br />
+      <label>Type of food: <input ng-model="resType"></label>
+      <br />
+      <label>Logo URL: <input ng-model="resLogo"></label>
+      <br />
+      <button ng-click="createRestaurant()">Create Restaurant</button>
+    </div>
+
+    <div class="restaurant-list">
+      <h1>List of restaurants</h1>
+
+      <label>Search: <input ng-model="filterText"></label>
+
+      <table>
+        <tr>
+          <th>Name</th>
+          <th><a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse">Food</a></th>
+          <th>Logo</th>
+        </tr>
+        <tr ng-repeat="res in restaurants | filter:filterText | orderBy:sortType:sortReverse" >
+          <td>{{ res.name }}</td>
+          <td>{{ res.type }}</td>
+          <td><img ng-src="{{ res.logo }}"></td>
+          <td><a href="#" ng-click="removeRes($index)">Delete</a></td>
+        </tr>
+      </table>
+    </div>
 
   </body>
 </html>
