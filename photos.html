@@ -1,0 +1,59 @@
+<html ng-app="widgets">
+  <head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="photo.js"></script>
+    <script src="app.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="photos.css">
+
+  </head>
+
+  <body ng-controller="PhotosCtrl">
+
+    <div class="container">
+
+      <div class="row">
+        <div ng-repeat="photo in rawFeed" class="item">
+
+          <div class="well">
+            <img ng-src="{{photo.images.standard_resolution.url}}">
+
+            <div class="row">
+              <div class="col-sm-4">
+                <p class="text-left date-taken"><em>{{ photo.caption.created_time | date:"MM/dd/yy"}}</em></p>
+              </div>
+
+              <div class="col-sm-8">
+                <p class="text-right username"><em>@{{ photo.caption.from.username }}</em></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <p>{{ photo.caption.text }}</p>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

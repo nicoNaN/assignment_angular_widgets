@@ -12,7 +12,7 @@ widgets.controller('RestaurantCtrl', ['$scope',
     $scope.removeRes = function(index) {
       alert(index);
       $scope.restaurants.splice(index, 1);
-    }
+    };
 
     $scope.createRestaurant = function() {
       var newRes = { name: $scope.resName,
@@ -21,6 +21,14 @@ widgets.controller('RestaurantCtrl', ['$scope',
       $scope.restaurants.push(newRes);
       $scope.resName = "";
       $scope.resType = "";
-    }
+    };
 
-}])
+}]);
+
+widgets.controller('PhotosCtrl', ['$scope',
+
+  function($scope) {
+
+    $scope.rawFeed = instagramResponse.data;
+
+}]);

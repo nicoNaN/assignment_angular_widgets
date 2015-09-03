@@ -1,0 +1,35 @@
+img {
+  width: 100%;
+  height: auto;
+}
+
+.date-taken, .username {
+  color: rgb(189, 189, 189);
+}
+
+.photo-box {
+  width: 30%;
+  height: 500px;
+}
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+
+.row {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em;
+
+}
+
+.item {
+ display: inline-block;
+ padding:  .25rem;
+ width:  100%;
+}
+
+.well {
+ position:relative;
+ display: block;
+}
