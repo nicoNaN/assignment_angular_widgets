@@ -1,19 +1,13 @@
+*, *:before, *:after {box-sizing:  border-box !important;}
+
 img {
   width: 100%;
   height: auto;
 }
 
-.date-taken, .username {
+.date-taken, .username, .likes, .comments {
   color: rgb(189, 189, 189);
 }
-
-.photo-box {
-  width: 30%;
-  height: 500px;
-}
-
-*, *:before, *:after {box-sizing:  border-box !important;}
-
 
 .row {
  -moz-column-width: 18em;
