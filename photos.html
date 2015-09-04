@@ -2,6 +2,7 @@
   <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.5/angular-filter.min.js"></script>
     <script src="photo.js"></script>
     <script src="app.js"></script>
 
@@ -26,7 +27,28 @@
     <div class="container">
 
       <div class="row">
-        <div ng-repeat="photo in rawFeed" class="item">
+        <div class="col-sm-12">
+          <label>Sort by filter type:</label>
+          <select ng-model="filterType">
+            <option ng-repeat="option in rawFeed | unique: 'filter'" value="{{option.filter}}">{{option.filter}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <label>Sort by hashtag:</label>
+          <p class="tag" ng-click="setTagFilter('')">ALL HASHTAGS</p>
+          <div ng-repeat="photo in rawFeed">
+            <div ng-repeat="tag in photo.tags" ng-click="setTagFilter(tag)" class="tags-list">
+              <p class="tag">#{{tag}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div ng-repeat="photo in rawFeed | filter:filterType" class="item">
 
           <div class="well">
             <img ng-src="{{photo.images.standard_resolution.url}}">
@@ -56,9 +78,22 @@
                 <div class="text-right likes">{{ photo.likes.count }} likes</div>
               </div>
             </div>
-
           </div>
 
+        </div>
+      </div>
+
+      <div class="row">
+        <div ng-repeat="photo in rawFeed" ng-click="setTagFilter(photo.caption.from.username)" class="item">
+
+          <div class="col-sm-6">
+            <img ng-src="{{photo.caption.from.profile_picture}}">
+          </div>
+
+          <div class="col-sm-6">
+            <p>@{{photo.caption.from.username}}</p>
+            <p>{{photo.caption.from.full_name}}</p>
+          </div>
 
         </div>
       </div>

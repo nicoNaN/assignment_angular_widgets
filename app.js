@@ -1,4 +1,4 @@
-var widgets = angular.module('widgets', []);
+var widgets = angular.module('widgets', ['angular.filter']);
 
 widgets.controller('RestaurantCtrl', ['$scope',
 
@@ -30,5 +30,17 @@ widgets.controller('PhotosCtrl', ['$scope',
   function($scope) {
 
     $scope.rawFeed = instagramResponse.data;
+
+    $scope.filterType = "";
+
+    $scope.setTagFilter = function(tag) {
+      $scope.filterType = tag;
+    };
+
+    $scope.uniqFilters = function() {
+      return $scope.rawFeed.filter(function(x, i) {
+        return $scope.indexOf(x) == i;
+      });
+    };
 
 }]);

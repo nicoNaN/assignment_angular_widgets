@@ -27,3 +27,12 @@ img {
  position:relative;
  display: block;
 }
+
+.tags-list {
+  display: inline;
+}
+
+.tag {
+  border: 1px solid black;
+  text-align: center;
+}
